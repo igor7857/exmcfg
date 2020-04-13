@@ -12,7 +12,6 @@
 </head>
 <body>
     <h2>Калькулятор лавки</h2>
-    <p>амбер-уши/горы<br>руби-уши<br>есть тайники ивента по 295 чм</p>
     <div id="form_1" class="forma">
     <p id="скр">цена товара в чм</p>
     <input type="number" id="i_цена_товара_в_чм_1" min="1" value="73" oninput="tt()">
@@ -27,58 +26,8 @@
         </div>
     </div>
 
-    <div>
-        <button id="шаг1" onclick="шаг1()" style="display: block">+</button>
-    </div>
-
-    <div id="form_2" class="forma" style="display: none">
-    <input placeholder="цена товара в чм" type="number" id="i_цена_товара_в_чм_2" min="1" oninput="tt()">
-        <br>
-    <input placeholder="единиц товара" type="number" id="i_единиц_товара_2" min="1" oninput="tt()">
-        <div class="bt_i">
-            <button onclick="op('i_единиц_товара_2', -5, 0)">-5</button>
-            <button onclick="op('i_единиц_товара_2', -1, 0)">-1</button>
-            <button onclick="op('i_единиц_товара_2', +1, 0)">+1</button>
-            <button onclick="op('i_единиц_товара_2', +5, 0)">+5</button>
-        </div>
-    </div>
-
-    <div>
-        <button id="шаг2" onclick="шаг2()" style="display: none">+</button>
-    </div>
-
-    <div id="form_3" class="forma" style="display: none">
-    <input placeholder="цена товара в чм" type="number" id="i_цена_товара_в_чм_3" min="1" oninput="tt()">
-        <br>
-    <input placeholder="единиц товара" type="number" id="i_единиц_товара_3" min="1" oninput="tt()">
-        <div class="bt_i">
-            <button onclick="op('i_единиц_товара_3', -5, 0)">-5</button>
-            <button onclick="op('i_единиц_товара_3', -1, 0)">-1</button>
-            <button onclick="op('i_единиц_товара_3', +1, 0)">+1</button>
-            <button onclick="op('i_единиц_товара_3', +5, 0)">+5</button>
-        </div>
-    </div>
-
-    <div>
-        <button id="шаг3" onclick="шаг3()" style="display: none;">+</button>
-    </div>
-
-    <div id="form_4" class="forma" style="display: none">
-    <input placeholder="цена товара в чм" type="number" id="i_цена_товара_в_чм_4" min="1" oninput="tt()">
-        <br>
-    <input placeholder="единиц товара" type="number" id="i_единиц_товара_4" min="1" oninput="tt()">
-        <div class="bt_i">
-            <button onclick="op('i_единиц_товара_4', -5, 0)">-5</button>
-            <button onclick="op('i_единиц_товара_4', -1, 0)">-1</button>
-            <button onclick="op('i_единиц_товара_4', +1, 0)">+1</button>
-            <button onclick="op('i_единиц_товара_4', +5, 0)">+5</button>
-        </div>
-    </div>
-
-    <div class="forma" style="text-align: right;">
+    <div class="forma" style="text-align: right; display: block;">
         <p id="vRub">руб</p>
-        <p id="vRaG" style="display: none;">руб+голд</p>
-        <p style="display: inline">право неожиданности<input class="ch" type="checkbox" id="i_bonus" oninput="tt()" style="margin-left: 5px; vertical-align: middle;"></p>
     </div>
 
     <div id="form_99">
@@ -86,9 +35,11 @@
             <p>продать за</p>
             <input type="number" id="i_продать_за" min="0" oninput="tt()">
             <div class="bt_i">
-                <p style="display: inline"><input class="ch" type="checkbox" id="i_chb" oninput="tt()" style="margin-top: 5px; margin-right: 5px;">через перекупа</p>
+            	<button onclick="op('i_продать_за', -5000, 0)">-5к</button>
                 <button onclick="op('i_продать_за', -500, 0)">-500</button>
+                <p style="display: inline"><input class="ch" type="checkbox" id="i_chb" oninput="tt()" style="margin-top: 5px; margin-right: 5px;">через перекупа</p>
                 <button onclick="op('i_продать_за', +500, 0)">+500</button>
+                <button onclick="op('i_продать_за', +5000, 0)">+5к</button>
             </div>
             <p id="vGold" style="text-align: center">с продажи</p>
             <p id="vGoldSum" style="text-align: center">с продажи всего</p>
@@ -102,7 +53,7 @@
     <script>
         tt();
         function tt(){
-            let курс = 0.12;
+            let курс = 3500/30750;
 
             let продать_за = document.getElementById("i_продать_за").value;
             if (продать_за.length == 0) {продать_за = 0};
@@ -112,31 +63,11 @@
             let ЦТ_1 = document.getElementById("i_цена_товара_в_чм_1").value;
             if (ЦТ_1.length == 0) {ЦТ_1 = 0};
 
-            let ЕТ_2 = document.getElementById("i_единиц_товара_2").value;
-            if (ЕТ_2.length == 0) {ЕТ_2 = 0};
-            let ЦТ_2 = document.getElementById("i_цена_товара_в_чм_2").value;
-            if (ЦТ_2.length == 0) {ЦТ_2 = 0};
 
-            let ЕТ_3 = document.getElementById("i_единиц_товара_3").value;
-            if (ЕТ_3.length == 0) {ЕТ_3 = 0};
-            let ЦТ_3 = document.getElementById("i_цена_товара_в_чм_3").value;
-            if (ЦТ_3.length == 0) {ЦТ_3 = 0};
-
-            let ЕТ_4 = document.getElementById("i_единиц_товара_4").value;
-            if (ЕТ_4.length == 0) {ЕТ_4 = 0};
-            let ЦТ_4 = document.getElementById("i_цена_товара_в_чм_4").value;
-            if (ЦТ_4.length == 0) {ЦТ_4 = 0};
-
-            let всего_чм = (ЕТ_1*ЦТ_1)+(ЕТ_2*ЦТ_2)+(ЕТ_3*ЦТ_3)+(ЕТ_4*ЦТ_4);
+            let всего_чм = (ЕТ_1*ЦТ_1);
             let rub = всего_чм * курс;
             rub = fix_rub(rub);
             document.getElementById("vRub").innerHTML = rub + " руб";
-
-            let Rg = 3500 / 30750 * всего_чм;
-            Rg = fix_Rg(Rg)
-            let rG = (rub - Rg)
-            rG = fix_rG(rG);
-            document.getElementById("vRaG").innerHTML = Rg + ` руб + ` + rG + ` голд`;
 
             let с_продажи;
             let ch = document.getElementById("i_chb");
@@ -151,20 +82,6 @@
 
             document.getElementById("vGold").innerHTML = "с продажи " + с_продажи + " голд";
             document.getElementById("vGoldSum").innerHTML = "с продажи всего " + с_продажи_всего + " голд";
-
-            document.getElementById("vRaG").style.textDecoration = 'none';
-
-            let razn = rub - Rg;
-            razn = razn.toFixed(2);
-
-            let bonus = document.getElementById("i_bonus");
-            if (bonus.checked) {
-                rub = rub - razn;
-                rub = fix_rub(rub);
-                курс = 3500 / 30750;
-                document.getElementById("vRub").innerHTML = rub + " руб";
-                document.getElementById("vRaG").style.textDecoration = 'line-through';
-            }
 
             let Kurs1kg = ЦТ_1 * курс / с_продажи * 1000;
             Kurs1kg = Kurs1kg.toFixed(2);
