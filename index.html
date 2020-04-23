@@ -105,7 +105,7 @@
 
         function fix_rub(a){
             a = a.toFixed(2);
-            if (a >= 50) {a = Math.floor(a);}
+            if (a >= 50) {a = Math.ceil(a);}
             if (a < 50) {
                 a = a * 10;
                 a = Math.ceil(a);
@@ -130,25 +130,6 @@
             a = a.toFixed(2);
             a = a * 5 * 100;
             return a;
-        }
-
-        function шаг1(){
-            document.getElementById('скр').style.display = 'none';
-            document.getElementById('ыть').style.display = 'none';
-            document.getElementById('br').style.display = 'block';
-            document.getElementById('form_99').style.display = 'none';
-            document.getElementById('form_2').style.display = 'block';
-            document.getElementById('шаг2').style.display = 'block';
-            document.getElementById('шаг1').style.display = 'none';
-        }
-        function шаг2(){
-            document.getElementById('form_3').style.display = 'block';
-            document.getElementById('шаг3').style.display = 'block';
-            document.getElementById('шаг2').style.display = 'none';
-        }
-        function шаг3(){
-            document.getElementById('form_4').style.display = 'block';
-            document.getElementById('шаг3').style.display = 'none';
         }
     </script>
 </body>
