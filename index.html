@@ -12,9 +12,16 @@
 </head>
 <body>
     <h2>Калькулятор лавки</h2>
+    <div class="forma">
+    <p style="display: inline; margin-left: 15%;">чм в пакете</p>
+    <input type="number" style="float: right; margin-bottom: 1px; margin-right: 15%; width: 35%; text-align: center; height: 18px;" id="i_чм_в_пакете" min="1" value="30750" oninput="tt()">
+    <br>
+    <p style="display: inline; margin-left: 15%;">цена пакета</p>
+    <input type="number" style="margin-top: 1px; width: 35%; float: right; text-align: center; margin-right: 15%; height: 18px;" id="i_цена_пакета" min="1" value="3500" oninput="tt()">
+    </div>
     <div id="form_1" class="forma">
     <p id="скр">цена товара в чм</p>
-    <input type="number" id="i_цена_товара_в_чм_1" min="1" value="229" oninput="tt()">
+    <input type="number" id="i_цена_товара_в_чм_1" min="1" value="73" oninput="tt()">
         <br id="br" style="display: none">
     <p id="ыть">единиц товара</p>
     <input type="number" id="i_единиц_товара_1" min="1" value="1" oninput="tt()">
@@ -53,7 +60,12 @@
     <script>
         tt();
         function tt(){
-            let курс = 3500/30750;
+        	let ЧвП = document.getElementById("i_чм_в_пакете").value;
+            if (ЧвП.length == 0) {ЧвП = 0};
+            let ЦПЧ = document.getElementById("i_цена_пакета").value;
+            if (ЦПЧ.length == 0) {ЦПЧ = 0};
+
+            let курс = ЦПЧ/ЧвП;
 
             let продать_за = document.getElementById("i_продать_за").value;
             if (продать_за.length == 0) {продать_за = 0};
@@ -62,6 +74,7 @@
             if (ЕТ_1.length == 0) {ЕТ_1 = 0};
             let ЦТ_1 = document.getElementById("i_цена_товара_в_чм_1").value;
             if (ЦТ_1.length == 0) {ЦТ_1 = 0};
+
 
 
             let всего_чм = (ЕТ_1*ЦТ_1);
